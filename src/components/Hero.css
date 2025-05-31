@@ -1,0 +1,262 @@
+/* Hero.css */
+
+/* تنسيق عام للهيدر */
+.hero {
+    background: linear-gradient(
+      135deg,
+      #f4d03f 0%, /* ذهبي لامع */
+      #c19a6b 40%, /* ذهبي دافئ */
+      #f4d03f 100% /* ذهبي لامع */
+    );
+    padding: 50px 20px;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh; /* تغطية الشاشة بالكامل */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* ظل خفيف للفخامة */
+    will-change: transform; /* تحسين أداء الرسوم المتحركة */
+  }
+  
+  /* تأثير توهج ذهبي متحرك (خداع بصري) */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle,
+      rgba(255, 223, 0, 0.5) 5%, /* توهج ذهبي */
+      transparent 40%
+    );
+    animation: glow 3s ease-in-out infinite; /* سرعة أعلى */
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform, opacity; /* تحسين الأداء */
+  }
+  
+  /* تأثير وميض خفيف */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at 25% 25%,
+      rgba(255, 255, 255, 0.25) 0%,
+      transparent 50%
+    );
+    animation: shimmer 2s ease-in-out infinite; /* وميض أسرع */
+    pointer-events: none;
+    z-index: 0;
+    will-change: opacity; /* تحسين الأداء */
+  }
+  
+  /* حركة التوهج */
+  @keyframes glow {
+    0% {
+      transform: translate(-10%, -10%) rotate(0deg);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translate(10%, 10%) rotate(90deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-10%, -10%) rotate(180deg);
+      opacity: 0.7;
+    }
+  }
+  
+  /* حركة الوميض */
+  @keyframes shimmer {
+    0% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.7;
+    }
+    100% {
+      opacity: 0.3;
+    }
+  }
+  
+  /* إزالة تأثير الجزيئات لتقليل الحمل */
+  .hero::backdrop {
+    display: none; /* إزالة الجزيئات لتحسين السرعة */
+  }
+  
+  /* تنسيق حاوية الملف الشخصي */
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    transform-style: preserve-3d;
+  }
+  
+  /* تنسيق الصورة الشخصية */
+  .profile-pic {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ffd700; /* حدود ذهبية */
+    box-shadow: 
+      0 0 20px rgba(255, 223, 0, 0.7),
+      0 0 40px rgba(255, 223, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease; /* تسريع التحولات */
+    transform: translateZ(15px);
+    will-change: transform, box-shadow; /* تحسين الأداء */
+  }
+  
+  .profile-pic:hover {
+    box-shadow: 
+      0 0 35px rgba(255, 223, 0, 0.9),
+      0 0 50px rgba(255, 223, 0, 0.5);
+    transform: scale(1.15) rotateY(10deg) translateZ(30px);
+  }
+  
+  /* تنسيق النصوص مع توهج احترافي */
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #c5c673;
+    text-shadow: 
+      0 0 6px rgba(210, 78, 21, 0.9),
+      0 0 15px rgba(23, 176, 61, 0.7); /* توهج محسن */
+    margin: 15px 0 5px;
+    letter-spacing: 1.8px;
+    position: relative;
+    display: inline-block;
+    animation: textPulse 1.5s ease-in-out infinite alternate; /* توهج أسرع */
+    transform: translateZ(10px);
+    will-change: text-shadow, transform; /* تحسين الأداء */
+  }
+  
+  p {
+    font-size: 1.4rem;
+    color: #45859f;
+    text-shadow: 
+      0 0 5px rgba(255, 223, 0, 0.8),
+      0 0 12px rgba(255, 223, 0, 0.6);
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+    animation: textPulseSecondary 1.8s ease-in-out infinite alternate; /* توهج أسرع */
+    transform: translateZ(5px);
+    will-change: text-shadow, transform;
+  }
+  
+  /* تأثير توهج للعنوان */
+  @keyframes textPulse {
+    0% {
+      text-shadow: 
+        0 0 6px rgba(255, 223, 0, 0.9),
+        0 0 15px rgba(255, 223, 0, 0.7);
+      transform: translateZ(10px) scale(1);
+    }
+    100% {
+      text-shadow: 
+        0 0 12px rgba(255, 223, 0, 1),
+        0 0 25px rgba(255, 223, 0, 0.8);
+      transform: translateZ(15px) scale(1.03);
+    }
+  }
+  
+  /* تأثير توهج ثانوي */
+  @keyframes textPulseSecondary {
+    0% {
+      text-shadow: 
+        0 0 5px rgba(255, 223, 0, 0.8),
+        0 0 12px rgba(255, 223, 0, 0.6);
+      transform: translateZ(5px) scale(1);
+    }
+    100% {
+      text-shadow: 
+        0 0 10px rgba(255, 223, 0, 1),
+        0 0 20px rgba(255, 223, 0, 0.8);
+      transform: translateZ(10px) scale(1.02);
+    }
+  }
+  
+  /* تنسيق المودال */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.92) 0%,
+      rgba(20, 20, 20, 0.95) 100%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: pointer;
+  }
+  
+  .modal-img {
+    max-width: 92%;
+    max-height: 92%;
+    object-fit: contain;
+    border-radius: 15px;
+    border: 2px solid #ffd700;
+    box-shadow: 
+      0 0 30px rgba(255, 223, 0, 0.6),
+      0 0 50px rgba(255, 223, 0, 0.3);
+    transition: transform 0.3s ease; /* تسريع التحول */
+    transform: translateZ(20px);
+    will-change: transform; /* تحسين الأداء */
+  }
+  
+  .modal-img:hover {
+    transform: scale(1.05) translateZ(30px);
+  }
+  
+  /* تحسين التصميم للشاشات الصغيرة */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 30px 15px;
+    }
+  
+    .profile-pic {
+      width: 130px;
+      height: 130px;
+    }
+  
+    h1 {
+      font-size: 2.2rem;
+    }
+  
+    p {
+      font-size: 1.1rem;
+    }
+  }
+  
+  /* تحسين للشاشات الكبيرة */
+  @media (min-width: 1200px) {
+    .profile-pic {
+      width: 200px;
+      height: 200px;
+    }
+  
+    h1 {
+      font-size: 3.5rem;
+    }
+  
+    p {
+      font-size: 1.6rem;
+  }
+  }

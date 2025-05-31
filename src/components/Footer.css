@@ -1,0 +1,255 @@
+/* Footer.css */
+
+/* تنسيق الفوتر */
+.footer {
+  position: relative;
+  padding: 40px 20px;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    #f4d03f 0%, /* ذهبي لامع */
+    #b9c143 40%, /* ذهبي دافئ */
+    #f4d03f 100% /* ذهبي لامع */
+  );
+  isolation: isolate;
+  overflow: hidden;
+  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.4); /* ظل عميق */
+  will-change: transform; /* تحسين الأداء */
+}
+
+/* تأثير توهج ذهبي متحرك */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(9, 10, 9, 0.5) 5%, /* توهج ذهبي */
+    transparent 40%
+  );
+  animation: glow 3s ease-in-out infinite; /* توهج سريع */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* تأثير وميض لامع */
+.footer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 25% 25%,
+    rgba(255, 255, 255, 0.25) 0%,
+    transparent 50%
+  );
+  animation: shimmer 2s ease-in-out infinite; /* وميض سريع */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* حركة التوهج */
+@keyframes glow {
+  0% {
+    transform: translate(-10%, -10%) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(10%, 10%) rotate(90deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-10%, -10%) rotate(180deg);
+    opacity: 0.7;
+  }
+}
+
+/* حركة الوميض */
+@keyframes shimmer {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+/* تنسيق روابط السوشيال ميديا */
+.social-links {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+/* تنسيق الأيقونات */
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 223, 0, 0.2),
+    rgba(255, 223, 0, 0.1)
+  ); /* خلفية ذهبية خفيفة */
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 0 10px rgba(255, 223, 0, 0.3); /* توهج داخلي */
+  transition: all 0.3s ease;
+  will-change: transform, box-shadow;
+}
+
+.social-link:hover {
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    0 0 15px currentColor; /* توهج بلون الأيقونة */
+  transform: translateY(-4px);
+}
+
+/* تنسيق الأيقونات */
+.icon {
+  font-size: 2rem;
+  transition: all 0.3s ease;
+  will-change: transform, filter;
+}
+
+/* ألوان مخصصة لكل أيقونة مع توهج احترافي */
+.social-link.facebook .icon {
+  color: #1877f2; /* لون فيسبوك */
+  filter: drop-shadow(0 0 6px rgba(24, 119, 242, 0.6));
+  animation: neonPulse 1.5s ease-in-out infinite alternate;
+}
+
+.social-link.instagram .icon {
+  color: #e1306c; /* لون إنستغرام */
+  filter: drop-shadow(0 0 6px rgba(225, 48, 108, 0.6));
+  animation: neonPulse 1.6s ease-in-out infinite alternate;
+}
+
+.social-link.whatsapp .icon {
+  color: #25d366; /* لون واتساب */
+  filter: drop-shadow(0 0 6px rgba(37, 211, 102, 0.6));
+  animation: neonPulse 1.7s ease-in-out infinite alternate;
+}
+
+.social-link.telegram .icon {
+  color: #0088cc; /* لون تليغرام */
+  filter: drop-shadow(0 0 6px rgba(0, 136, 204, 0.6));
+  animation: neonPulse 1.8s ease-in-out infinite alternate;
+}
+
+.social-link.phone .icon {
+  color: #f1c40f; /* لون ذهبي للهاتف */
+  filter: drop-shadow(0 0 6px rgba(241, 196, 15, 0.6));
+  animation: neonPulse 1.9s ease-in-out infinite alternate;
+}
+
+/* تأثيرات عند التمرير */
+.social-link:hover .icon {
+  transform: scale(1.2) rotate(10deg);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 20px currentColor);
+}
+
+/* تأثير تموج عند النقر */
+.social-link:active::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 223, 0, 0.3), transparent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: rippleEffect 0.5s ease-out forwards;
+}
+
+/* تأثير توهج نابض */
+@keyframes neonPulse {
+  0% {
+    filter: drop-shadow(0 0 6px currentColor);
+  }
+  100% {
+    filter: drop-shadow(0 0 12px currentColor);
+  }
+}
+
+/* تأثير التموج */
+@keyframes rippleEffect {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+  100% {
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+  }
+}
+
+/* تأثير توهج النص */
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 5px rgba(79, 186, 188, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(87, 161, 196, 0.8);
+  }
+}
+
+/* التصميم المتجاوب */
+@media (max-width: 600px) {
+  .footer {
+    padding: 30px 15px;
+  }
+
+  .social-links {
+    gap: 15px;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .icon {
+    font-size: 1.8rem;
+  }
+
+  .by-line {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .footer {
+    padding: 20px 10px;
+  }
+
+  .social-link {
+    width: 35px;
+    height: 35px;
+  }
+
+  .icon {
+    font-size: 1.6rem;
+  }
+
+  .by-line {
+    font-size: 0.8rem;
+}
+}
