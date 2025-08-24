@@ -24,7 +24,7 @@ function Footer() {
       {/* روابط السوشيال ميديا */}
       <div className="social-links">
         <motion.a
-          href="https://www.facebook.com/share/1EBNXbsakj/"
+          href="https://www.facebook.com/share/1BFEXY3ciX/"
           target="_blank"
           rel="noopener noreferrer"
           variants={iconVariants}
@@ -36,7 +36,7 @@ function Footer() {
           <FaFacebook className="icon facebook" />
         </motion.a>
         <motion.a
-          href="https://www.instagram.com/kholoud_tamerr?igsh=dDEyaGl0eWZmbmJw"
+          href="https://www.instagram.com/ibrahim_saad64?igsh=MXNiejJiaWl4eWNodg=="
           target="_blank"
           rel="noopener noreferrer"
           variants={iconVariants}
@@ -48,7 +48,7 @@ function Footer() {
           <FaInstagram className="icon instagram" />
         </motion.a>
         <motion.a
-          href="https://wa.me/+201288905717"
+          href="https://wa.me/+20017765594"
           target="_blank"
           rel="noopener noreferrer"
           variants={iconVariants}
@@ -60,7 +60,7 @@ function Footer() {
           <FaWhatsapp className="icon whatsapp" />
         </motion.a>
         <motion.a
-          href="https://t.me/+201288905717"
+          href="https://t.me/+201228598661"
           target="_blank"
           rel="noopener noreferrer"
           variants={iconVariants}
@@ -72,7 +72,7 @@ function Footer() {
           <FaTelegram className="icon telegram" />
         </motion.a>
         <motion.a
-          href="tel:‪+201288905717‬"
+          href="tel:‪+201017765594‬"
           target="_blank"
           rel="noopener noreferrer"
           variants={iconVariants}

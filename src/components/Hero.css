@@ -1,262 +1,425 @@
-/* Hero.css */
-
 /* تنسيق عام للهيدر */
 .hero {
-    background: linear-gradient(
-      135deg,
-      #f4d03f 0%, /* ذهبي لامع */
-      #c19a6b 40%, /* ذهبي دافئ */
-      #f4d03f 100% /* ذهبي لامع */
-    );
-    padding: 50px 20px;
-    position: relative;
-    overflow: hidden;
-    min-height: 100vh; /* تغطية الشاشة بالكامل */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* ظل خفيف للفخامة */
-    will-change: transform; /* تحسين أداء الرسوم المتحركة */
+  background: linear-gradient(
+    135deg,
+    #4d9812 0%,
+    #c19a6b 40%,
+    #cf4915 100%
+  );
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  will-change: transform;
+}
+
+/* تأثير توهج ذهبي متحرك */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(16, 16, 15, 0.5) 5%,
+    transparent 40%
+  );
+  animation: glow 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* تأثير وميض خفيف */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 25% 25%,
+    rgba(255, 255, 255, 0.25) 0%,
+    transparent 50%
+  );
+  animation: shimmer 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes glow {
+  0% {
+    transform: translate(-10%, -10%) rotate(0deg);
+    opacity: 0.7;
   }
-  
-  /* تأثير توهج ذهبي متحرك (خداع بصري) */
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(
-      circle,
-      rgba(255, 223, 0, 0.5) 5%, /* توهج ذهبي */
-      transparent 40%
-    );
-    animation: glow 3s ease-in-out infinite; /* سرعة أعلى */
-    pointer-events: none;
-    z-index: 0;
-    will-change: transform, opacity; /* تحسين الأداء */
+  50% {
+    transform: translate(10%, 10%) rotate(90deg);
+    opacity: 1;
   }
-  
-  /* تأثير وميض خفيف */
-  .hero::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-      circle at 25% 25%,
-      rgba(255, 255, 255, 0.25) 0%,
-      transparent 50%
-    );
-    animation: shimmer 2s ease-in-out infinite; /* وميض أسرع */
-    pointer-events: none;
-    z-index: 0;
-    will-change: opacity; /* تحسين الأداء */
+  100% {
+    transform: translate(-10%, -10%) rotate(180deg);
+    opacity: 0.7;
   }
-  
-  /* حركة التوهج */
-  @keyframes glow {
-    0% {
-      transform: translate(-10%, -10%) rotate(0deg);
-      opacity: 0.7;
-    }
-    50% {
-      transform: translate(10%, 10%) rotate(90deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translate(-10%, -10%) rotate(180deg);
-      opacity: 0.7;
-    }
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.3;
   }
-  
-  /* حركة الوميض */
-  @keyframes shimmer {
-    0% {
-      opacity: 0.3;
-    }
-    50% {
-      opacity: 0.7;
-    }
-    100% {
-      opacity: 0.3;
-    }
+  50% {
+    opacity: 0.7;
   }
-  
-  /* إزالة تأثير الجزيئات لتقليل الحمل */
-  .hero::backdrop {
-    display: none; /* إزالة الجزيئات لتحسين السرعة */
+  100% {
+    opacity: 0.3;
   }
-  
-  /* تنسيق حاوية الملف الشخصي */
-  .profile-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-    transform-style: preserve-3d;
+}
+
+/* تنسيق حاوية الملف الشخصي */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  transform-style: preserve-3d;
+}
+
+/* تنسيق الصورة الشخصية */
+.profile-pic {
+  width: clamp(120px, 20vw, 160px);
+  height: clamp(120px, 20vw, 160px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffd700;
+  box-shadow: 
+    0 0 15px rgba(255, 223, 0, 0.7),
+    0 0 30px rgba(255, 223, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: translateZ(10px);
+}
+
+.profile-pic:hover {
+  box-shadow: 
+    0 0 25px rgba(243, 242, 235, 0.9),
+    0 0 40px rgba(255, 223, 0, 0.5);
+  transform: scale(1.15) rotateY(10deg) translateZ(20px);
+}
+
+/* تنسيق النصوص */
+h1 {
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  font-weight: 900;
+  color: #c5c673;
+  text-shadow: 
+    0 0 5px rgba(210, 78, 21, 0.9),
+    0 0 12px rgba(234, 37, 15, 0.7);
+  margin: 15px 0 5px;
+  letter-spacing: 1.5px;
+  animation: textPulse 1.5s ease-in-out infinite alternate;
+}
+
+p {
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  color: #040506;
+  text-shadow: 
+    0 0 4px rgba(47, 139, 205, 0.8),
+    0 0 10px rgba(255, 223, 0, 0.6);
+  font-weight: 600;
+  animation: textPulseSecondary 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes textPulse {
+  0% {
+    text-shadow: 
+      0 0 5px rgba(20, 18, 4, 0.9),
+      0 0 12px rgba(255, 223, 0, 0.7);
+    transform: translateZ(10px) scale(1);
   }
-  
-  /* تنسيق الصورة الشخصية */
+  100% {
+    text-shadow: 
+      0 0 10px rgba(255, 223, 0, 1),
+      0 0 20px rgba(255, 223, 0, 0.8);
+    transform: translateZ(15px) scale(1.03);
+  }
+}
+
+@keyframes textPulseSecondary {
+  0% {
+    text-shadow: 
+      0 0 4px rgba(255, 223, 0, 0.8),
+      0 0 10px rgba(255, 223, 0, 0.6);
+    transform: translateZ(5px) scale(1);
+  }
+  100% {
+    text-shadow: 
+      0 0 8px rgba(255, 223, 0, 1),
+      0 0 18px rgba(255, 223, 0, 0.8);
+    transform: translateZ(10px) scale(1.02);
+  }
+}
+
+/* تنسيق المودال */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(20, 20, 20, 0.92) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.modal-img {
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 2px solid #ffd700;
+  box-shadow: 
+    0 0 25px rgba(255, 223, 0, 0.5),
+    0 0 40px rgba(255, 223, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.modal-img:hover {
+  transform: scale(1.05);
+}
+
+/* تنسيق قسم الأيقونات */
+.icon-container {
+  display: flex;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 15px);
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.icon-item {
+  width: clamp(60px, 12vw, 80px);
+  height: clamp(60px, 12vw, 80px);
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2e3d7d, #83afe8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 
+    0 0 8px rgba(66, 130, 215, 0.6),
+    0 0 15px rgba(255, 223, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.icon-text {
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+  color: #ffffff;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding: 0 8px;
+  font-weight: bold;
+}
+
+/* تنسيق محتوى المودال للأيقونات */
+.modal-content {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(240, 240, 240, 0.9)
+  );
+  border-radius: 12px;
+  padding: clamp(15px, 3vw, 20px);
+  max-width: 90%;
+  width: clamp(300px, 80vw, 600px);
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+  font-size: clamp(1.5rem, 4vw, 1.8rem);
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.modal-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(100px, 25vw, 150px), 1fr));
+  gap: clamp(10px, 2vw, 15px);
+  justify-items: center;
+}
+
+.modal-icon-img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ffd700;
+  box-shadow: 
+    0 0 12px rgba(255, 223, 0, 0.6),
+    0 0 20px rgba(255, 223, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.modal-icon-img:hover {
+  transform: scale(1.1);
+}
+
+.close-button {
+  background-color: #cf4915;
+  color: white;
+  border: none;
+  padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+  background-color: #b73e12;
+}
+
+/* تنسيق المودال الكامل للصورة */
+.fullscreen-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+}
+
+.fullscreen-content {
+  position: relative;
+  max-width: 95%;
+  max-height: 95vh;
+}
+
+.fullscreen-img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(255, 223, 0, 0.4);
+}
+
+.fullscreen-close {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background: #cf4915;
+  color: white;
+  border: none;
+  width: clamp(30px, 5vw, 35px);
+  height: clamp(30px, 5vw, 35px);
+  border-radius: 50%;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.fullscreen-close:hover {
+  background: #b73e12;
+  transform: scale(1.1);
+}
+
+/* تحسين التصميم للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .hero {
+    padding: 30px 10px;
+  }
+
   .profile-pic {
-    width: 170px;
-    height: 170px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #ffd700; /* حدود ذهبية */
-    box-shadow: 
-      0 0 20px rgba(255, 223, 0, 0.7),
-      0 0 40px rgba(255, 223, 0, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease; /* تسريع التحولات */
-    transform: translateZ(15px);
-    will-change: transform, box-shadow; /* تحسين الأداء */
+    width: clamp(100px, 18vw, 120px);
+    height: clamp(100px, 18vw, 120px);
   }
-  
-  .profile-pic:hover {
-    box-shadow: 
-      0 0 35px rgba(255, 223, 0, 0.9),
-      0 0 50px rgba(255, 223, 0, 0.5);
-    transform: scale(1.15) rotateY(10deg) translateZ(30px);
-  }
-  
-  /* تنسيق النصوص مع توهج احترافي */
+
   h1 {
-    font-size: 2.8rem;
-    font-weight: 900;
-    color: #c5c673;
-    text-shadow: 
-      0 0 6px rgba(210, 78, 21, 0.9),
-      0 0 15px rgba(23, 176, 61, 0.7); /* توهج محسن */
-    margin: 15px 0 5px;
-    letter-spacing: 1.8px;
-    position: relative;
-    display: inline-block;
-    animation: textPulse 1.5s ease-in-out infinite alternate; /* توهج أسرع */
-    transform: translateZ(10px);
-    will-change: text-shadow, transform; /* تحسين الأداء */
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
   }
-  
+
   p {
-    font-size: 1.4rem;
-    color: #45859f;
-    text-shadow: 
-      0 0 5px rgba(255, 223, 0, 0.8),
-      0 0 12px rgba(255, 223, 0, 0.6);
-    font-weight: 600;
-    position: relative;
-    display: inline-block;
-    animation: textPulseSecondary 1.8s ease-in-out infinite alternate; /* توهج أسرع */
-    transform: translateZ(5px);
-    will-change: text-shadow, transform;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
   }
-  
-  /* تأثير توهج للعنوان */
-  @keyframes textPulse {
-    0% {
-      text-shadow: 
-        0 0 6px rgba(255, 223, 0, 0.9),
-        0 0 15px rgba(255, 223, 0, 0.7);
-      transform: translateZ(10px) scale(1);
-    }
-    100% {
-      text-shadow: 
-        0 0 12px rgba(255, 223, 0, 1),
-        0 0 25px rgba(255, 223, 0, 0.8);
-      transform: translateZ(15px) scale(1.03);
-    }
+
+  .icon-container {
+    gap: 10px;
   }
-  
-  /* تأثير توهج ثانوي */
-  @keyframes textPulseSecondary {
-    0% {
-      text-shadow: 
-        0 0 5px rgba(255, 223, 0, 0.8),
-        0 0 12px rgba(255, 223, 0, 0.6);
-      transform: translateZ(5px) scale(1);
-    }
-    100% {
-      text-shadow: 
-        0 0 10px rgba(255, 223, 0, 1),
-        0 0 20px rgba(255, 223, 0, 0.8);
-      transform: translateZ(10px) scale(1.02);
-    }
+
+  .icon-item {
+    width: clamp(50px, 10vw, 60px);
+    height: clamp(50px, 10vw, 60px);
   }
-  
-  /* تنسيق المودال */
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.92) 0%,
-      rgba(20, 20, 20, 0.95) 100%
-    );
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    cursor: pointer;
+
+  .icon-text {
+    font-size: clamp(0.6rem, 1.5vw, 0.7rem);
   }
-  
-  .modal-img {
-    max-width: 92%;
-    max-height: 92%;
-    object-fit: contain;
-    border-radius: 15px;
-    border: 2px solid #ffd700;
-    box-shadow: 
-      0 0 30px rgba(255, 223, 0, 0.6),
-      0 0 50px rgba(255, 223, 0, 0.3);
-    transition: transform 0.3s ease; /* تسريع التحول */
-    transform: translateZ(20px);
-    will-change: transform; /* تحسين الأداء */
+
+  .modal-content {
+    padding: 15px;
+    width: 95%;
   }
-  
-  .modal-img:hover {
-    transform: scale(1.05) translateZ(30px);
+
+  .modal-icon-img {
+    width: clamp(80px, 20vw, 100px);
   }
-  
-  /* تحسين التصميم للشاشات الصغيرة */
-  @media (max-width: 768px) {
-    .hero {
-      padding: 30px 15px;
-    }
-  
-    .profile-pic {
-      width: 130px;
-      height: 130px;
-    }
-  
-    h1 {
-      font-size: 2.2rem;
-    }
-  
-    p {
-      font-size: 1.1rem;
-    }
+
+  .fullscreen-close {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
   }
-  
-  /* تحسين للشاشات الكبيرة */
-  @media (min-width: 1200px) {
-    .profile-pic {
-      width: 200px;
-      height: 200px;
-    }
-  
-    h1 {
-      font-size: 3.5rem;
-    }
-  
-    p {
-      font-size: 1.6rem;
+}
+
+/* تحسين للشاشات الكبيرة */
+@media (min-width: 1200px) {
+  .profile-pic {
+    width: clamp(160px, 15vw, 180px);
+    height: clamp(160px, 15vw, 180px);
   }
+
+  h1 {
+    font-size: clamp(2.8rem, 5vw, 3.2rem);
   }
+
+  p {
+    font-size: clamp(1.3rem, 3vw, 1.5rem);
+  }
+
+  .icon-item {
+    width: clamp(80px, 10vw, 90px);
+    height: clamp(80px, 10vw, 90px);
+  }
+
+  .icon-text {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+  }
+
+  .modal-icon-img {
+    width: clamp(140px, 15vw, 160px);
+}
+}
