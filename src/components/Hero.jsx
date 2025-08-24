@@ -40,9 +40,9 @@ function Hero() {
       id: 4,
       name: 'Marassi',
       images: [
-        'public/images/mphoo1.jpg',
-        'public/images/mphoo2.jpg',
-        'public/images/mphoo3.jpg',
+        '/images/mphoo1.jpg',
+        '/images/mphoo2.jpg',
+        '/images/mphoo3.jpg',
       ],
     },
   ];
