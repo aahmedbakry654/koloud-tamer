@@ -93,7 +93,7 @@ function Hero() {
           Ibrahim Saad
         </motion.h1>
         <motion.p custom={0.3} variants={textVariants} initial="hidden" animate="visible">
-          Survey Specialist
+        Survey  Engineer
         </motion.p>
 
         <motion.div
